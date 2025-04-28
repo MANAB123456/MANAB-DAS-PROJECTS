@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f6fc;
+            text-align: center;
+            padding: 50px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>📈 Stock Price Predictor</h1>
+    <form method="POST" action="/predict">
+        <input type="text" name="ticker" placeholder="Enter Stock Ticker (e.g. AAPL)" required>
+        <br>
+        <button type="submit">Predict</button>
+    </form>
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            text-align: center;
+            padding: 30px;
+        }
+        img {
+            max-width: 90%;
+            margin-top: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 18px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>📊 7-Day Stock Price Prediction for {{ ticker }}</h1>
+    <img src="{{ plot_url }}" alt="Prediction Plot">
+    <ul>
+        {% for date, price in zip(dates, predictions) %}
+        <li><strong>{{ date }}:</strong> ₹{{ "%.2f"|format(price) }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">← Back to Home</a>
+</body>
+</html>

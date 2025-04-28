@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Predictor</title>
+</head>
+<body>
+    <h1>Stock Price Prediction</h1>
+    <form method="POST" action="/predict">
+        <label for="ticker">Enter Stock Symbol (e.g., AAPL):</label>
+        <input type="text" id="ticker" name="ticker" required>
+        <button type="submit">Predict</button>
+    </form>
+    {% if predictions %}
+        <h2>Next 7-Day Predictions for {{ ticker }}</h2>
+        <ul>
+            {% for date, price in predictions %}
+                <li>{{ date }}: ${{ '%.2f'|format(price) }}</li>
+            {% endfor %}
+        </ul>
+        <img src="{{ plot_url }}" alt="Prediction Plot" width="600">
+    {% endif %}
+</body>
+</html>
